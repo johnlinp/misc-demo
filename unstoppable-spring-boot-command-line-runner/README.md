@@ -58,3 +58,15 @@ The logs are:
 2020-04-21 09:33:11.995  INFO 11835 --- [       Thread-2] io.github.johnlinp.demo.Printer          : InnerPrinter idx: 7
 ^C2020-04-21 09:33:12.305  INFO 11835 --- [extShutdownHook] io.github.johnlinp.demo.Printer          : Printer close
 ```
+
+
+## Solution
+
+According to the comment at https://github.com/spring-projects/spring-boot/issues/21055#issuecomment-617007078,
+the solution to this is simply adding:
+
+```
+thread.setDaemon(true);
+```
+
+in the constructor of `Printer`.
